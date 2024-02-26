@@ -1,6 +1,6 @@
 <template>
   <component
-    :is="to ? 'RouterLink' : 'button'"
+    :is="tag"
     :to="to"
     class="block rounded transition-all duration-300 disabled:opacity-75"
     :class="[variantClassList, sizeClassList]"
@@ -12,13 +12,12 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { type RouteLocationRaw } from 'vue-router'
+import { type RouterLinkProps } from 'vue-router'
 
-interface Props {
+interface Props extends RouterLinkProps {
   variant?: 'primary' | 'secondary'
   size?: 'sm' | 'md' | 'lg'
   disabled?: boolean
-  to?: RouteLocationRaw
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -26,6 +25,8 @@ const props = withDefaults(defineProps<Props>(), {
   size: 'md',
   disabled: false
 })
+
+const tag = computed(() => (props.to ? 'RouterLink' : 'button'))
 
 const variantClassList = computed(() => {
   switch (props.variant) {
@@ -52,5 +53,3 @@ const sizeClassList = computed(() => {
   }
 })
 </script>
-
-<style scoped></style>

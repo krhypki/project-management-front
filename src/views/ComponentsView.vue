@@ -7,6 +7,9 @@
     <VButton variant="secondary">test</VButton>
     <VButton variant="secondary" disabled>test</VButton>
     <VButton to="/" variant="secondary" disabled>test</VButton>
+
+    <VLink to="/">light</VLink>
+    <VLink to="/" variant="dark">dark</VLink>
   </div>
 </template>
 
