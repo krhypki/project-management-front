@@ -1,23 +1,69 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import ComponentsView from '@/views/ComponentsView.vue'
+import LoginView from '@/views/LoginView.vue'
+import RegisterView from '@/views/RegisterView.vue'
+import { useAuthStore } from '@/stores/auth'
+import ChangePasswordView from '@/views/ChangePasswordView.vue'
 
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: HomeView,
+    meta: {
+      unauthorized: true
+    }
   },
   {
     path: '/components',
     name: 'components',
     component: ComponentsView
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: LoginView,
+    meta: {
+      unauthorized: true
+    }
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: RegisterView,
+    meta: {
+      unauthorized: true
+    }
+  },
+  {
+    path: '/account',
+    name: 'account',
+    component: ChangePasswordView
   }
 ]
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  const { token } = useAuthStore()
+
+  // authorized user trying to access unauthorized route
+  if (to.meta.unauthorized && token && to.name !== 'home') {
+    next({ name: 'home' })
+    return
+  }
+
+  // unauthorized user trying to access authorized route
+  if (!to.meta.unauthorized && !token) {
+    next({ name: 'home' })
+    return
+  }
+
+  next()
 })
 
 export default router

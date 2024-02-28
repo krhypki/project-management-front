@@ -2,8 +2,8 @@
   <component
     :is="tag"
     :to="to"
-    class="block rounded transition-all duration-300 disabled:opacity-75"
-    :class="[variantClassList, sizeClassList]"
+    class="block rounded transition-all duration-300 disabled:opacity-75 text-center"
+    :class="[variantClassList, sizeClassList, { 'w-full': block }]"
     :disabled="disabled"
   >
     <slot />
@@ -12,18 +12,21 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { type RouterLinkProps } from 'vue-router'
+import { type RouteLocationRaw } from 'vue-router'
 
-interface Props extends RouterLinkProps {
+interface Props {
   variant?: 'primary' | 'secondary'
   size?: 'sm' | 'md' | 'lg'
   disabled?: boolean
+  to?: RouteLocationRaw
+  block?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
   variant: 'primary',
   size: 'md',
-  disabled: false
+  disabled: false,
+  block: false
 })
 
 const tag = computed(() => (props.to ? 'RouterLink' : 'button'))
@@ -46,7 +49,7 @@ const sizeClassList = computed(() => {
     case 'md':
       return 'px-2 py-1.5'
     case 'lg':
-      return 'p-2.5'
+      return 'p-2.5 text-lg'
 
     default:
       return ''
