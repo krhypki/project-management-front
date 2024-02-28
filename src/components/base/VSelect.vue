@@ -1,5 +1,5 @@
 <template>
-  <div class="min-w-40">
+  <div v-click-outside="closeDropdown" class="min-w-40">
     <button
       class="bg-transparent rounded border p-2 w-full border-white hover:border-indigo-500 text-sm flex justify-between items-center"
       @click="toggleDropdown"
@@ -29,6 +29,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { vClickOutside } from '@/directives/v-click-outside'
 
 interface Option {
   value: string
@@ -51,5 +52,9 @@ const onSelect = (option: Option) => {
 
 const toggleDropdown = () => {
   showDropdown.value = !showDropdown.value
+}
+
+const closeDropdown = () => {
+  showDropdown.value = false
 }
 </script>
