@@ -1,10 +1,12 @@
 import type { User } from './User'
 
+export type TaskStatus = 'Created' | 'In Progress' | 'Done'
+
 export interface Task {
   id: number
   name: string
   code: string
-  status: 'Created' | 'In Progress' | 'Done'
+  status: TaskStatus
   desc: string
   reporter: User
   assignee?: User

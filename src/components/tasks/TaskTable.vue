@@ -10,7 +10,7 @@
       </VTr>
     </thead>
     <tbody>
-      <VTr v-for="task in tasks" :key="task.code" hoverable @click="navigateToTask">
+      <VTr v-for="task in tasks" :key="task.code" hoverable @click="navigateToTask(task.code)">
         <VTd>
           {{ task.code }}
         </VTd>

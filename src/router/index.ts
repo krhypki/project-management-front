@@ -8,6 +8,9 @@ import ChangePasswordView from '@/views/ChangePasswordView.vue'
 import ProjectListView from '@/views/ProjectListView.vue'
 import ProjectView from '@/views/ProjectView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
+import TaskView from '@/views/TaskView.vue'
+import TaskListView from '@/views/TaskListView.vue'
+import CreateTaskView from '@/views/CreateTaskView.vue'
 
 const routes = [
   {
@@ -53,6 +56,21 @@ const routes = [
     name: 'project',
     path: '/project/:code',
     component: ProjectView
+  },
+  {
+    name: 'task',
+    path: '/task/:code',
+    component: TaskView
+  },
+  {
+    name: 'tasks',
+    path: '/tasks',
+    component: TaskListView
+  },
+  {
+    name: 'create-task',
+    path: '/task/new',
+    component: CreateTaskView
   },
   {
     path: '/:catchAll(.*)*',
