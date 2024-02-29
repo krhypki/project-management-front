@@ -6,7 +6,6 @@ interface DireciveElement extends HTMLElement {
 
 export const vClickOutside = {
   mounted(el: DireciveElement, binding: DirectiveBinding) {
-    console.log('mounted')
     el.clickOutsideEvent = (event: Event) => {
       const target = event.target as HTMLElement
       const { additionalSelector, handler } = binding.value

@@ -15,6 +15,7 @@
         :label="label"
         :placeholder="label"
         class="mb-10"
+        :type="name.toLocaleLowerCase().includes('password') ? 'password' : 'text'"
       />
       <VButton type="submit" size="lg" block>Register</VButton>
     </Form>
@@ -39,7 +40,7 @@ const { validationSchema } = useValidationSchema([
 
 const onSubmit = async (values: { [key: string]: string | null }) => {
   try {
-    await axios.post('/auth/signup', {
+    await axios.post('/api/auth/signup', {
       ...values
     })
 

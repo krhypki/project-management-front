@@ -32,11 +32,9 @@ const { validationSchema } = useValidationSchema(['password', 'confirmPassword']
 const onSubmit = async (values: { [key: string]: string | null }) => {
   success.value = true
   try {
-    const data = await axios.patch('/users/update-password', {
+    const data = await axios.patch('/api/users/update-password', {
       ...values
     })
-
-    console.log(data)
   } catch (err) {
     console.log(err)
   }

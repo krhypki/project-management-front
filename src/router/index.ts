@@ -5,6 +5,9 @@ import LoginView from '@/views/LoginView.vue'
 import RegisterView from '@/views/RegisterView.vue'
 import { useAuthStore } from '@/stores/auth'
 import ChangePasswordView from '@/views/ChangePasswordView.vue'
+import ProjectListView from '@/views/ProjectListView.vue'
+import ProjectView from '@/views/ProjectView.vue'
+import NotFoundView from '@/views/NotFoundView.vue'
 
 const routes = [
   {
@@ -40,6 +43,21 @@ const routes = [
     path: '/account',
     name: 'account',
     component: ChangePasswordView
+  },
+  {
+    path: '/projects',
+    name: 'projects',
+    component: ProjectListView
+  },
+  {
+    name: 'project',
+    path: '/project/:code',
+    component: ProjectView
+  },
+  {
+    path: '/:catchAll(.*)*',
+    name: 'not-found',
+    component: NotFoundView
   }
 ]
 

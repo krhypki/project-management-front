@@ -47,7 +47,7 @@ const onSubmit = async (values: FormData) => {
   requestProcessing.value = true
 
   try {
-    const { data } = await axios.post('/auth/signin', {
+    const { data } = await axios.post('/api/auth/signin', {
       ...values
     })
 

@@ -3,7 +3,7 @@
 </template>
 <script setup lang="ts">
 import { useAuthStore } from '@/stores/auth'
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 import UnauthorizedView from './UnauthorizedView.vue'
 import DashboardView from './DashboardView.vue'
 
