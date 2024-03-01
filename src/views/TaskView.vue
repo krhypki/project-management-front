@@ -9,7 +9,7 @@
     </VAlert>
     <div class="flex justify-center">
       <div class="basis-1/4">
-        <VHeading tag="h1">{{ task.name }}</VHeading>
+        <VHeading tag="h1">{{ `${task.code} ${task.name}` }}</VHeading>
         <p class="text-lg">
           {{ task.desc }}
         </p>

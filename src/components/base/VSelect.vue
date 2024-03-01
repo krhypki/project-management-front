@@ -3,10 +3,11 @@
     <span v-if="label" class="block mb-3"> {{ label }}</span>
     <button
       class="bg-transparent rounded border p-2 w-full border-white hover:border-indigo-500 text-sm flex justify-between items-center"
+      type="button"
       @click="toggleDropdown"
     >
       {{ selectedDisplay.text }}
-      <VIcon :name="showDropdown ? 'arrow-up' : 'arrow-down'" class="ml-3" />
+      <VIcon :name="showDropdown ? 'arrow-up' : 'arrow-down'" class="ml-auto" />
     </button>
     <div class="relative">
       <div
@@ -18,6 +19,7 @@
           :key="option.value"
           @click="onSelect(option)"
           class="block px-2 py-2 hover:bg-white hover:text-indigo-700 w-full text-left"
+          type="button"
         >
           <slot name="option" :option="option">
             {{ option.text }}

@@ -2,7 +2,7 @@
   <VSection>
     <div class="flex items-center justify-between mb-20">
       <VHeading tag="h1" class="mb-0"> List of all tasks</VHeading>
-      <VButton>Create new</VButton>
+      <VButton :to="{ name: 'create-task' }">Create new</VButton>
     </div>
     <TaskTable :tasks="tasks" />
   </VSection>
@@ -15,7 +15,7 @@ import { onBeforeMount, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
-const tasks = ref<Task>([])
+const tasks = ref<Task[]>([])
 
 onBeforeMount(async () => {
   try {

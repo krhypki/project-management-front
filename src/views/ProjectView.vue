@@ -5,7 +5,8 @@
       Owner:
       <span class="block text-indigo-500"> {{ project.owner.email }}</span>
     </VHeading>
-    <TaskTable :tasks="project.tasks" />
+    <TaskTable v-if="project.tasks.length" :tasks="project.tasks" />
+    <h3 v-else>No task found in the project.</h3>
   </VSection>
 </template>
 
