@@ -2,7 +2,10 @@ import Cookies from 'universal-cookie'
 import { defineStore } from 'pinia'
 import axios from 'axios'
 const cookies = new Cookies(null, { path: '/' })
-axios.defaults.headers.common['Authorization'] = `Bearer ${cookies.get('token')}`
+const addAxiosAuthHeader = (token: string) => {
+  axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
+}
+addAxiosAuthHeader(cookies.get('token'))
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
@@ -15,10 +18,12 @@ export const useAuthStore = defineStore('auth', {
     setToken(token: string) {
       this.token = token
       cookies.set('token', token)
+      addAxiosAuthHeader(token)
     },
     logout() {
       this.token = null
       cookies.remove('token')
+
       this.router.push({ name: 'home' })
     }
   }

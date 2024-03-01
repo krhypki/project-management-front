@@ -18,10 +18,10 @@
           {{ task.name }}
         </VTd>
         <VTd>
-          {{ task.reporter.email }}
+          {{ typeof task.reporter === 'string' ? task.reporter : task.reporter.email }}
         </VTd>
         <VTd>
-          {{ task.assignee.email }}
+          {{ typeof task.assignee === 'string' ? task.assignee : task.assignee?.email }}
         </VTd>
         <VTd>
           {{ task.status }}

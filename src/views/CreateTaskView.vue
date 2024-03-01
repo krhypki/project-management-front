@@ -29,7 +29,7 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 const projects = ref<string[]>([])
 const users = ref<string[]>([])
-const formData = reactive<Task>({
+const formData = reactive<Omit<Task, 'code'>>({
   name: 'name',
   desc: '',
   status: 'Created',
